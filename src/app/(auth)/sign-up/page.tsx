@@ -12,6 +12,7 @@ import {
   AuthValidator,
   TAuthValidator,
 } from "@/lib/validators/credentials-validator";
+import { trpc } from "@/trpc/client";
 
 const SignUp = () => {
   const {
@@ -24,6 +25,11 @@ const SignUp = () => {
 
   const onSubmit = ({ email, password }: TAuthValidator) => {
     console.log("Success");
+
+
+    const {data} = trpc.anyAPIRoute.useQuery();
+    console.log(data);
+
   };
 
   return (
